@@ -9,13 +9,24 @@ export interface GameObject {
   id: string;
   pos: Vector2D;
   radius: number;
-  type: 'Planet' | 'Asteroid' | 'Goal' | 'Sensor' | 'Nebula' | 'QuantumField' | 'Portal' | 'Stardust' | 'DataFragment';
+  type:
+    | 'Planet'
+    | 'Asteroid'
+    | 'Goal'
+    | 'Sensor'
+    | 'Nebula'
+    | 'QuantumField'
+    | 'Portal'
+    | 'Stardust'
+    | 'DataFragment'
+    | 'ColdSink';
   mass?: number; // For gravity
-  angle?: number; // For sensors
+  angle?: number; // For sensors / asteroids
   beamWidth?: number; // For sensors
   color?: string; // Hex color for rendering
   targetId?: string; // For Portals
   collected?: boolean;
+  vertices?: number[]; // Normalized radial offsets for procedural asteroid silhouette
 }
 
 export interface ProbeState {
@@ -40,6 +51,7 @@ export interface GameState {
   heat: number;
   switchCooldown: number;
   goalCollected: boolean;
+  goalLockedFlashUntil?: number;
   launches: number;
   fragmentsCollected: number;
   totalFragments: number;

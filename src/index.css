@@ -50,7 +50,7 @@ body {
 }
 
 canvas {
-  image-rendering: pixelated;
+  image-rendering: auto;
 }
 
 @layer utilities {
